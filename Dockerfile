@@ -11,4 +11,5 @@ COPY main.py ./
 COPY config.yaml ./
 COPY clash-config.yaml ./
 
-CMD [ "python", "./main.py" ]
+ENTRYPOINT [ "python", "./main.py" ]
+CMD [ "--serve" ]

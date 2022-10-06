@@ -9,7 +9,7 @@ from collections import defaultdict
 from aiohttp import ClientSession
 from datetime import datetime
 from waitress import serve as waitress_serve
-from flask import Flask
+from flask import Flask, send_file
 import asyncio
 import yaml
 import sys
@@ -135,7 +135,7 @@ def serve():
 
     @app.route('/clash-config.yaml')
     def clash_config():
-        return f"<pre>{open('clash-config.yaml').read()}</pre>"
+        return send_file('clash-config.yaml')
 
     @app.route('/archives')
     @app.route('/archives/<filename>')
@@ -195,10 +195,10 @@ async def main():
         parser.add_argument('--serve', action='store_const', default=False, const=serve)
         parser.add_argument('--gen-config', action='store_const', default=False, const=gen_config)
         args = parser . parse_args ()
-        if args.gen_config:
-            await args.gen_config()
         if args.serve:
             args.serve()
+        if args.gen_config:
+            await args.gen_config()
         
 if __name__ == '__main__':
     asyncio.run(main())
