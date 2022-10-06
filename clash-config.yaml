@@ -1,0 +1,250 @@
+# GLaDOS Andriod Clash Config File for ClashforWindows/0.19.24
+# Sun Jul 31 2022 03:26:35 GMT+0000 (UTC)
+
+# port of HTTP
+port: 7890
+
+# port of SOCKS5
+socks-port: 7891
+
+allow-lan: true
+
+# Rule / Global/ DIRECT (default is Rule)
+mode: rule
+
+# set log level to stdout (default is info)
+# info / warning / error / debug
+log-level: info
+
+# A RESTful API for clash
+external-controller: 127.0.0.1:9090
+
+# Secret for RESTful API (Optional)
+secret: ""
+
+dns:
+  enable: false # set true to enable dns (default is false)
+  listen: 127.0.0.1:53
+  nameserver:
+     - 119.29.29.29
+     - 114.114.114.114
+  fallback: # concurrent request with nameserver, fallback used when GEOIP country isn't CN
+     - tls://1.0.0.1:853
+     - tls://dns.google:853
+
+proxies:
+
+proxy-groups:
+- name: Proxy
+  type: "url-test"
+  url: "http://www.gstatic.cn/generate_204"
+  interval: 900
+  tolerance: 100
+  proxies:
+
+rules:
+# check first
+- DOMAIN-SUFFIX,qq.com,DIRECT
+- DOMAIN-SUFFIX,taobao.com,DIRECT
+- DOMAIN-SUFFIX,baidu.com,DIRECT
+- DOMAIN-SUFFIX,weibo.com,DIRECT
+- DOMAIN-SUFFIX,jd.com,DIRECT
+- DOMAIN-SUFFIX,tmall.com,DIRECT
+- DOMAIN-SUFFIX,360.cn,DIRECT
+- DOMAIN-SUFFIX,zhihu.com,DIRECT
+- DOMAIN-SUFFIX,com.cn,DIRECT
+
+- DOMAIN-SUFFIX,v2ex.com,Proxy
+- DOMAIN-KEYWORD,gitlab,Proxy
+- DOMAIN-KEYWORD,github,Proxy
+- DOMAIN-KEYWORD,stackoverflow.com,Proxy
+- DOMAIN-SUFFIX,techcrunch.com,Proxy
+- DOMAIN-SUFFIX,trello.com,Proxy
+- DOMAIN-SUFFIX,techsmith.com,Proxy
+- DOMAIN-SUFFIX,thepiratebay.org,Proxy
+- DOMAIN-SUFFIX,pinterest.com,Proxy
+
+# hot fix
+#
+- DOMAIN-KEYWORD,discord,Proxy
+- DOMAIN-KEYWORD,akam,Proxy
+- DOMAIN,services.googleapis.cn,Proxy
+- DOMAIN,googleapis.cn,Proxy
+- DOMAIN-SUFFIX,ping.pe,Proxy
+- DOMAIN-SUFFIX,static.wikia.nocookie.net,Proxy
+
+#crypto
+- DOMAIN-SUFFIX,bitbank.cc,Proxy
+- DOMAIN-SUFFIX,bitcoin.org,Proxy
+- DOMAIN-SUFFIX,bitfinex.com,Proxy
+- DOMAIN-SUFFIX,bitmex.com,Proxy
+- DOMAIN-SUFFIX,bitquick.co,Proxy
+- DOMAIN-SUFFIX,bitstamp.net,Proxy
+- DOMAIN-SUFFIX,bittrex.com,Proxy
+- DOMAIN-SUFFIX,btcbox.co.jp,Proxy
+- DOMAIN-SUFFIX,cex.io,Proxy
+- DOMAIN-SUFFIX,coinbase.com,Proxy
+- DOMAIN-SUFFIX,dogecoin.com,Proxy
+- DOMAIN-SUFFIX,kraken.com,Proxy
+- DOMAIN-SUFFIX,okex.com,Proxy
+- DOMAIN-SUFFIX,okx.com,Proxy
+- DOMAIN-SUFFIX,coinex.com,Proxy
+- DOMAIN-SUFFIX,paxful.com,Proxy
+
+
+# > Bilibili
+- DOMAIN-KEYWORD,bili,DIRECT
+- DOMAIN-SUFFIX,acg.tv,DIRECT
+- DOMAIN-SUFFIX,acgvideo.com,DIRECT
+- DOMAIN-SUFFIX,b23.tv,DIRECT
+- DOMAIN-SUFFIX,hdslb.com,DIRECT
+- DOMAIN-SUFFIX,im9.com,DIRECT
+
+# common site
+- DOMAIN,ifconfig.me,Proxy
+- DOMAIN,services.googleapis.cn,Proxy
+- DOMAIN,google.com,Proxy
+- DOMAIN-SUFFIX,google.cn,Proxy
+- DOMAIN-SUFFIX,googleapis.cn,Proxy
+- DOMAIN-KEYWORD,facebook,Proxy
+- DOMAIN-SUFFIX,fb.me,Proxy
+- DOMAIN-KEYWORD,gmail,Proxy
+- DOMAIN-KEYWORD,twitter,Proxy
+- DOMAIN-KEYWORD,instagram,Proxy
+- DOMAIN-SUFFIX,twimg.com,Proxy
+- DOMAIN-KEYWORD,blogspot,Proxy
+- DOMAIN-KEYWORD,whatsapp,Proxy
+- DOMAIN-KEYWORD,glados,Proxy
+- DOMAIN-KEYWORD,wikipedia,Proxy
+- DOMAIN-SUFFIX,google.com,Proxy
+- DOMAIN-SUFFIX,facebook.com,Proxy
+- DOMAIN-SUFFIX,yahoo.com,Proxy
+- DOMAIN-SUFFIX,amazon.com,Proxy
+- DOMAIN-SUFFIX,vk.com,Proxy
+- DOMAIN-SUFFIX,microsoft.com,Proxy
+- DOMAIN-SUFFIX,reddit.com,Proxy
+- DOMAIN-SUFFIX,live.com,Proxy
+- DOMAIN-SUFFIX,zoom.us,Proxy
+- DOMAIN-SUFFIX,wikipedia.org,Proxy
+- DOMAIN-SUFFIX,myshopify.com,Proxy
+- DOMAIN-SUFFIX,instagram.com,Proxy
+- DOMAIN-SUFFIX,okezone.com,Proxy
+- DOMAIN-SUFFIX,office.com,Proxy
+- DOMAIN-SUFFIX,ebay.com,Proxy
+- DOMAIN-SUFFIX,bongacams.com,Proxy
+- DOMAIN-SUFFIX,blogspot.com,Proxy
+- DOMAIN-SUFFIX,yahoo.co.jp,Proxy
+- DOMAIN-SUFFIX,microsoftonline.com,Proxy
+- DOMAIN-SUFFIX,babytree.com,Proxy
+- DOMAIN-SUFFIX,amazon.co.jp,Proxy
+- DOMAIN-SUFFIX,adobe.com,Proxy
+- DOMAIN-SUFFIX,livejasmin.com,Proxy
+- DOMAIN-SUFFIX,stackoverflow.com,Proxy
+- DOMAIN-SUFFIX,dropbox.com,Proxy
+- DOMAIN-SUFFIX,msn.com,Proxy
+- DOMAIN-SUFFIX,yandex.ru,Proxy
+- DOMAIN-SUFFIX,linkedin.com,Proxy
+- DOMAIN-SUFFIX,twitter.com,Proxy
+- DOMAIN-SUFFIX,imgur.com,Proxy
+- DOMAIN-SUFFIX,amazonaws.com,Proxy
+- DOMAIN-SUFFIX,imdb.com,Proxy
+- DOMAIN-SUFFIX,whatsapp.com,Proxy
+- DOMAIN-SUFFIX,google.co.jp,Proxy
+- DOMAIN-SUFFIX,trello.com,Proxy
+- DOMAIN-SUFFIX,wordpress.com,Proxy
+- DOMAIN-SUFFIX,nytimes.com,Proxy
+- DOMAIN-SUFFIX,spotify.com,Proxy
+
+- GEOIP,CN,DIRECT
+
+#NETFLIX
+- DOMAIN-KEYWORD,scholar,Proxy
+- DOMAIN-KEYWORD,netflix,Proxy
+- DOMAIN-SUFFIX,netflix.com,Proxy
+- DOMAIN-SUFFIX,netflix.net,Proxy
+- DOMAIN-SUFFIX,nflxext.com,Proxy
+- DOMAIN-SUFFIX,nflximg.com,Proxy
+- DOMAIN-SUFFIX,nflximg.net,Proxy
+- DOMAIN-SUFFIX,nflxso.net,Proxy
+- DOMAIN-KEYWORD,dualstack.apiproxy-,Proxy
+- DOMAIN-KEYWORD,dualstack.ichnaea-web-,Proxy
+- DOMAIN,netflix.com.edgesuite.net,Proxy
+- DOMAIN-SUFFIX,netflix.com,Proxy
+- DOMAIN-SUFFIX,netflix.net,Proxy
+- DOMAIN-SUFFIX,nflxext.com,Proxy
+- DOMAIN-SUFFIX,nflximg.com,Proxy
+- DOMAIN-SUFFIX,nflximg.net,Proxy
+- DOMAIN-SUFFIX,nflxso.net,Proxy
+- DOMAIN-SUFFIX,nflxvideo.net,Proxy
+
+- IP-CIDR,8.41.4.0/24,Proxy,no-resolve
+- IP-CIDR,23.78.0.0/16,Proxy,no-resolve
+- IP-CIDR,23.246.0.0/18,Proxy,no-resolve
+- IP-CIDR,34.192.0.0/16,Proxy,no-resolve
+- IP-CIDR,34.208.0.0/12,Proxy,no-resolve
+- IP-CIDR,34.248.0.0/13,Proxy,no-resolve
+- IP-CIDR,35.160.0.0/13,Proxy,no-resolve
+- IP-CIDR,37.77.184.0/21,Proxy,no-resolve
+- IP-CIDR,38.72.126.0/24,Proxy,no-resolve
+- IP-CIDR,44.224.0.0/16,Proxy,no-resolve
+- IP-CIDR,44.230.0.0/16,Proxy,no-resolve
+- IP-CIDR,45.57.0.0/17,Proxy,no-resolve
+- IP-CIDR,52.0.0.0/15,Proxy,no-resolve
+- IP-CIDR,52.5.0.0/16,Proxy,no-resolve
+- IP-CIDR,52.7.0.0/16,Proxy,no-resolve
+- IP-CIDR,52.10.0.0/15,Proxy,no-resolve
+- IP-CIDR,52.12.0.0/15,Proxy,no-resolve
+- IP-CIDR,52.22.0.0/16,Proxy,no-resolve
+- IP-CIDR,52.24.0.0/14,Proxy,no-resolve
+- IP-CIDR,52.32.0.0/14,Proxy,no-resolve
+- IP-CIDR,52.40.0.0/14,Proxy,no-resolve
+- IP-CIDR,52.48.0.0/14,Proxy,no-resolve
+- IP-CIDR,52.54.0.0/16,Proxy,no-resolve
+- IP-CIDR,52.71.0.0/16,Proxy,no-resolve
+- IP-CIDR,52.72.0.0/16,Proxy,no-resolve
+- IP-CIDR,52.88.0.0/15,Proxy,no-resolve
+- IP-CIDR,54.0.0.0/16,Proxy,no-resolve
+- IP-CIDR,54.68.0.0/15,Proxy,no-resolve
+- IP-CIDR,54.74.0.0/15,Proxy,no-resolve
+- IP-CIDR,54.76.0.0/15,Proxy,no-resolve
+- IP-CIDR,54.85.0.0/16,Proxy,no-resolve
+- IP-CIDR,54.86.0.0/16,Proxy,no-resolve
+- IP-CIDR,54.148.0.0/15,Proxy,no-resolve
+- IP-CIDR,54.175.0.0/16,Proxy,no-resolve
+- IP-CIDR,54.186.0.0/15,Proxy,no-resolve
+- IP-CIDR,54.188.0.0/15,Proxy,no-resolve
+- IP-CIDR,54.213.0.0/16,Proxy,no-resolve
+- IP-CIDR,54.214.128.0/17,Proxy,no-resolve
+- IP-CIDR,64.120.128.0/17,Proxy,no-resolve
+- IP-CIDR,66.197.128.0/17,Proxy,no-resolve
+- IP-CIDR,69.53.224.0/19,Proxy,no-resolve
+- IP-CIDR,103.87.204.0/22,Proxy,no-resolve
+- IP-CIDR,108.175.32.0/20,Proxy,no-resolve
+- IP-CIDR,185.2.220.0/22,Proxy,no-resolve
+- IP-CIDR,185.9.188.0/22,Proxy,no-resolve
+- IP-CIDR,192.173.64.0/18,Proxy,no-resolve
+- IP-CIDR,198.38.96.0/19,Proxy,no-resolve
+- IP-CIDR,198.45.48.0/20,Proxy,no-resolve
+- IP-CIDR,203.75.84.0/24,Proxy,no-resolve
+- IP-CIDR,203.83.220.0/22,Proxy,no-resolve
+- IP-CIDR,203.116.0.0/16,Proxy,no-resolve
+- IP-CIDR,203.198.0.0/20,Proxy,no-resolve
+- IP-CIDR,203.198.80.0/21,Proxy,no-resolve
+- IP-CIDR,207.45.72.0/22,Proxy,no-resolve
+- IP-CIDR,208.75.76.0/22,Proxy,no-resolve
+- IP-CIDR,218.102.32.0/19,Proxy,no-resolve
+- IP-CIDR,219.76.0.0/17,Proxy,no-resolve
+
+# LAN
+- IP-CIDR,127.0.0.0/8,DIRECT
+- IP-CIDR,10.0.0.0/8,DIRECT
+- IP-CIDR,17.0.0.0/8,DIRECT
+- IP-CIDR,100.64.0.0/10,DIRECT
+- IP-CIDR,172.16.0.0/12,DIRECT
+- IP-CIDR,192.168.0.0/16,DIRECT
+# RULE VERSION
+- DOMAIN,2020020202.version.clash.im,REJECT
+
+- MATCH,Proxy
+
+# =======最终规则 END====== #

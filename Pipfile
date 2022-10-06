@@ -1,0 +1,14 @@
+[[source]]
+url = "http://pypi.mirrors.ustc.edu.cn/simple/"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+pyyaml = "*"
+aiohttp = "*"
+aiohttp-socks = "*"
+
+[dev-packages]
+
+[requires]
+python_version = "*"
